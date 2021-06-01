@@ -21,11 +21,20 @@
 
   .input {
     padding: 0.5rem 0.5rem;
-    caret-color: red;
+    caret-color: rgb(55, 111, 233);
     font-size: 1.6rem;
     border: 1px solid rgb(211, 205, 205);
     border-radius: 0.5rem;
+
+    &::-webkit-input-placeholder {
+      /* Chrome/Opera/Safari */
+      color: rgb(126, 126, 126);
+    }
+    &:focus {
+      outline: none;
+    }
   }
+
   .loginBtn {
     font-size: 1.6rem;
     padding: 0.5rem 1rem;

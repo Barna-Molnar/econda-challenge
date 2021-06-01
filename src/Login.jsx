@@ -7,9 +7,6 @@ function Login({ test }) {
   const [isUser, setIsUser] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const [inputValueIsUser, setInputValueIsUSer] = useState('');
-  const textInput = React.useRef();
-
-  const clearInput = () => (textInput.current.value = '');
 
   return (
     <div className="container__form">
@@ -20,7 +17,6 @@ function Login({ test }) {
           </label>
           <input
             className="input"
-            // ref={textInput}
             onChange={(e) => {
               e.preventDefault();
               setInputValue(e.target.value);
@@ -32,7 +28,6 @@ function Login({ test }) {
             type="text"
             placeholder="username"
             required
-            // ref={this.inputRef}
           />
 
           <input
@@ -57,15 +52,6 @@ function Login({ test }) {
               setInputValue('');
               setInputValueIsUSer('');
             }}
-            //   onClick={(e) => {
-            //     e.preventDefault();
-            //     console.log();
-            //     this.props.login(this.state.username, this.state.pin);
-            //     this.setState({
-            //       username: '',
-            //       pin: '',
-            //     });
-            //   }}
           >
             login
           </button>

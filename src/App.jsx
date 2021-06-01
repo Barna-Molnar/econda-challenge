@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.scss';
 import React from 'react';
 import Login from './Login';
+import SideMenu from './SideMenu';
 
 // function App() {
 //   return (
@@ -29,6 +30,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Login test={this.b} />
+        <SideMenu />
       </div>
     );
   }

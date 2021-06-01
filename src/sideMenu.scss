@@ -1,0 +1,22 @@
+.menu__container {
+  height: 100vh;
+  border: 1px solid black;
+  width: 20vw;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 2rem;
+
+  .menu__main {
+    &--Analitics {
+      li {
+        list-style: none;
+      }
+    }
+
+    &--CrossSell {
+      li {
+        list-style: none;
+      }
+    }
+  }
+}
