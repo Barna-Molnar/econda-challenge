@@ -1,0 +1,37 @@
+.container__form {
+  background-color: #eee;
+  padding: 1rem 2rem;
+
+  .form__container {
+    display: flex;
+
+    &__input-group {
+      width: 100%;
+      display: flex;
+      align-items: center;
+
+      label {
+        font-size: 1.6rem;
+      }
+    }
+    &__input-group > * {
+      margin-right: 1rem;
+    }
+  }
+
+  .input {
+    padding: 0.5rem 0.5rem;
+    caret-color: red;
+    font-size: 1.6rem;
+    border: 1px solid rgb(211, 205, 205);
+    border-radius: 0.5rem;
+  }
+  .loginBtn {
+    font-size: 1.6rem;
+    padding: 0.5rem 1rem;
+
+    border-radius: 0.5rem;
+    border: 1px solid rgb(196, 196, 196);
+    background-color: white;
+  }
+}
