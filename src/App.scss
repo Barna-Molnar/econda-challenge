@@ -1,1 +1,5 @@
-
+.App {
+  display: grid;
+  grid-template-rows: min-content 100%;
+  grid-template-columns: min-content 1fr;
+}

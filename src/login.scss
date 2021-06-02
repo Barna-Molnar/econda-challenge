@@ -1,6 +1,8 @@
 .container__form {
   background-color: #eee;
   padding: 1rem 2rem;
+  grid-row: 1/2;
+  grid-column: 1/-1;
 
   .form__container {
     display: flex;

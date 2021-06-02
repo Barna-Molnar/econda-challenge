@@ -8,6 +8,11 @@ function Login({ test }) {
   const [inputValue, setInputValue] = useState('');
   const [inputValueIsUser, setInputValueIsUSer] = useState('');
 
+  const reset = () => {
+    setInputValue('');
+    setInputValueIsUSer('');
+    setDisabled(true);
+  };
   return (
     <div className="container__form">
       <form className="form__container">
@@ -48,9 +53,13 @@ function Login({ test }) {
             className="loginBtn"
             onClick={(e) => {
               e.preventDefault();
-              test({ userName, isUser });
-              setInputValue('');
-              setInputValueIsUSer('');
+              if (userName === 'A' || userName === 'B') {
+                test({ userName, isUser });
+                reset();
+              } else {
+                reset();
+                return;
+              }
             }}
           >
             login
