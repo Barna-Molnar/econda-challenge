@@ -3,7 +3,7 @@ const userA = {
     group: "A",
     isPaid: true,
     isPremium: true,
-    isUser: true,
+    isUser: false,
 }
 
 const userB = {
@@ -16,7 +16,7 @@ export const users = [userA, userB]
 
 const analytics = {
     title: 'Analytics',
-    subMenu: ['Dashboard', 'Reports', 'EigeneReports', 'Centricity', 'Plug- Ins']
+    subMenu: ['Dashboard', 'Reports', 'Eigene-Reports', 'Centricity', 'Plug-Ins']
 }
 
 const crossSell = {
@@ -50,12 +50,38 @@ function createMenuItems(user, menus) {
         return acc
     }, [])
 
-
     console.log(menuArray)
-
-
 
     return menuArray
 }
 var test = createMenuItems(userA, menus)
 console.log(test)
+
+export function generateMarkup(obj) {
+
+    var titleLower = obj.title.toLowerCase().replace(' ', '-')
+    return `
+
+                <div className="container container__${titleLower}">
+                    <h3 className="container__title">
+                    {' '}
+                         <a href="/${titleLower}">${obj.title}</a>
+                    </h3>
+                    <ul className="container__menuItems container__menuItems--${obj.title}">
+                    ${obj.subMenu ?
+            obj.subMenu.map(item => {
+                return `
+                        <li className="menu__item">
+                            <a href="/${titleLower}/${item.toLowerCase()}">${item}</a>
+                        </li>
+                        `
+            }).join('')
+            : ''}
+                    </ul>
+                 </div>   
+    `
+}
+// const markup = generateMarkup(analytics)
+
+const markup = test.map(obj => generateMarkup(obj)).join('')
+console.log(markup)
