@@ -1,6 +1,9 @@
+@import './color.scss';
+
 .container__form {
-  background-color: #eee;
-  padding: 1rem 2rem;
+  border-top: 3px solid $logoblau;
+  background-color: $hellgrau-2;
+  padding: 1rem 0;
   grid-row: 1/2;
   grid-column: 1/-1;
   box-shadow: rgb(0 0 0 / 12%) 0 1px 3px;
@@ -8,17 +11,24 @@
   .form__container {
     display: flex;
 
+    &__input-group > * {
+      margin-right: 1rem;
+    }
     &__input-group {
       width: 100%;
       display: flex;
       align-items: center;
 
-      label {
-        font-size: 1.6rem;
+      &__label {
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.4rem;
+        font-weight: 500;
+        padding: 1rem 4rem 1rem 2rem;
+        width: 15rem;
+        margin: 0;
+        color: $logoblau-abstufung;
       }
-    }
-    &__input-group > * {
-      margin-right: 1rem;
     }
   }
 
@@ -28,6 +38,7 @@
     font-size: 1.6rem;
     border: 1px solid rgb(211, 205, 205);
     border-radius: 0.5rem;
+    color: $logoblau-abstufung;
 
     &::-webkit-input-placeholder {
       /* Chrome/Opera/Safari */

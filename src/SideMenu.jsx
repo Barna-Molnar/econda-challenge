@@ -17,7 +17,7 @@ function SideMenu({ user }) {
     },
   ]);
 
-  return <div className="menu__container">{jsx}</div>;
+  return <div className={`menu__container `}>{jsx}</div>;
 }
 
 export default SideMenu;

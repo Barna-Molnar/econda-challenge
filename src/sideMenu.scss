@@ -1,7 +1,8 @@
+@import './color.scss';
 .menu__container {
   height: 100vh;
   //   border: 1px solid black;
-  width: 15rem;
+  width: 18rem;
   display: flex;
   flex-direction: column;
 
@@ -30,33 +31,41 @@
       }
     }
     &__menuItems {
-      &--Analytics {
-      }
-      // padding: 2rem;
-
       .menu__item {
         list-style: none;
         position: relative;
+        transition: 0.2s;
+        border-right: 4px solid transparent;
         a {
           padding: 8px 8px 8px 4rem;
           text-decoration: none;
           font-size: 1.3rem;
+          font-weight: 400;
           color: #818181;
           display: block;
-          transition: 0.2s;
+          transition: 0.05s;
         }
         a::before {
-          content: '>';
+          content: '→';
           position: absolute;
+          font-size: 1.3rem;
+          font-weight: 800;
           // font-style: bold;
           left: 10px;
           color: white;
         }
       }
       .menu__item:hover {
-        background-color: rgb(85, 85, 85);
+        // background-color: rgb(85, 85, 85);
+        // background-color: $dunkelblau;
+        border-right: 4px solid $dunkelblau;
         a {
           color: white;
+          color: $dunkelblau;
+          font-weight: 500;
+        }
+        a::before {
+          color: $dunkelblau;
         }
       }
     }

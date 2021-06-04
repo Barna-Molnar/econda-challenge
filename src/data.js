@@ -26,8 +26,9 @@ const crossSell = {
 export const menus = [analytics, crossSell]
 
 export function createMenuItems(user, menus) {
-    if (Object.keys(user).length === 0) return []
     var menuArray = []
+
+    if (Object.keys(user).length === 0) return []
     // Kunde B ==> permission == only Analytics
     if (!user.isPremium) menuArray = [menus.find(m => m.title === 'Analytics')];
 
@@ -48,8 +49,8 @@ export function createMenuItems(user, menus) {
 
     return menuArray
 }
-var test = createMenuItems({}, menus)
-console.log(test)
+// var test = createMenuItems({}, menus)
+// console.log(test)
 
 export function generateMarkup(obj) {
 
@@ -77,6 +78,6 @@ export function generateMarkup(obj) {
 }
 // const markup = generateMarkup(analytics)
 
-export const markup = test.map(obj => generateMarkup(obj)).join('')
+// export const markup = test.map(obj => generateMarkup(obj)).join('')
 // console.log(markup)
 

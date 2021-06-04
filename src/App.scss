@@ -1,3 +1,4 @@
+@import './color.scss';
 .App {
   display: grid;
   grid-template-rows: min-content 100%;
@@ -5,7 +6,8 @@
   overflow-y: hidden;
 
   .content {
-    background-color: #bfc7cf;
+    background-color: $hellblau;
+    padding: 5rem;
     // border-top: 2px solid #01498e;
   }
 }

@@ -18,14 +18,15 @@ import { users } from './data.js';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = JSON.parse(window.localStorage.getItem('state')) || {
-      user: {},
+    this.state = JSON.parse(window.sessionStorage.getItem('state')) || {
+      user: '',
     };
 
     this.getUser = this.getUser.bind(this);
+    this.logOut = this.logOut.bind(this);
   }
   setState(state) {
-    window.localStorage.setItem('state', JSON.stringify(state));
+    window.sessionStorage.setItem('state', JSON.stringify(state));
     super.setState(state);
   }
   getUser(obj) {
@@ -34,6 +35,14 @@ class App extends React.Component {
 
     this.setState({
       user: user,
+    });
+  }
+
+  logOut() {
+    console.log('logged out');
+    sessionStorage.removeItem('state');
+    this.setState({
+      user: '',
     });
   }
   // getMarkup() {
@@ -46,16 +55,20 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        <Login getUser={this.getUser} />
+      <Router>
+        <div className="App">
+          <Login
+            getUser={this.getUser}
+            logOut={this.logOut}
+            user={this.state.user}
+          />
 
-        <SideMenu user={this.state.user} />
-        <Router>
+          <SideMenu user={this.state.user} />
           <div className="content">
             <Switch>
-              {/* <Route exact path="/">
-                <h1>Home</h1>
-              </Route> */}
+              <Route exact path="/">
+                <h1>Pls log in</h1>
+              </Route>
               <Route exact path="/analytics">
                 <h1>Analytics</h1>
               </Route>
@@ -94,8 +107,8 @@ class App extends React.Component {
               </Route>
             </Switch>
           </div>
-        </Router>
-      </div>
+        </div>
+      </Router>
     );
   }
 }
