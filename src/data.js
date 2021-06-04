@@ -60,7 +60,7 @@ export function generateMarkup(obj) {
                 <div class="container container__${titleLower}">
                     <h3 class="container__title">
                    
-                         <a href="/${titleLower}">${obj.title}</a>
+                       ${obj.title}
                     </h3>
                     <ul class="container__menuItems container__menuItems--${obj.title}">
                     ${obj.subMenu ?

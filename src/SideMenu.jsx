@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactHtmlParser from 'react-html-parser';
 import { Link } from 'react-router-dom';
+import Popup from './Popup';
 
 import './sideMenu.scss';
 import { menus, createMenuItems, generateMarkup } from './data';
@@ -17,7 +18,21 @@ function SideMenu({ user }) {
     },
   ]);
 
-  return <div className={`menu__container `}>{jsx}</div>;
+  const [popupIsOpen, setPopupIsOpen] = useState(false);
+  const popupOpen = (e) => {
+    if (e.target.className !== 'container__title') return;
+    setPopupIsOpen(!popupIsOpen);
+  };
+  const popupClose = (e) => {
+    setPopupIsOpen(!popupIsOpen);
+  };
+
+  return (
+    <div onClick={popupOpen} className={`menu__container `}>
+      {jsx}
+      <Popup open={popupIsOpen} close={popupClose} />
+    </div>
+  );
 }
 
 export default SideMenu;

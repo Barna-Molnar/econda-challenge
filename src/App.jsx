@@ -2,8 +2,9 @@ import './App.scss';
 import React from 'react';
 import Login from './Login';
 import SideMenu from './SideMenu';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { users } from './data.js';
+// import ControlledPopup from './Popup';
 
 // function App() {
 //   return (
@@ -64,6 +65,7 @@ class App extends React.Component {
           />
 
           <SideMenu user={this.state.user} />
+          {/* <ControlledPopup /> */}
           <div className="content">
             <Switch>
               <Route exact path="/">
