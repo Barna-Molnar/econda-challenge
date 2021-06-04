@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './login.scss';
 
-function Login({ test }) {
+function Login({ getUser }) {
   const [userName, setUserName] = useState('');
   const [disabled, setDisabled] = useState(true);
   const [isUser, setIsUser] = useState(false);
@@ -37,7 +37,6 @@ function Login({ test }) {
 
           <input
             className="input"
-            // ref={textInput}
             value={inputValueIsUser}
             onChange={(e) => {
               e.preventDefault();
@@ -54,7 +53,7 @@ function Login({ test }) {
             onClick={(e) => {
               e.preventDefault();
               if (userName === 'A' || userName === 'B') {
-                test({ userName, isUser });
+                getUser({ userName, isUser });
                 reset();
               } else {
                 reset();

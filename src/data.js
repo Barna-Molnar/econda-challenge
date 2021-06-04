@@ -24,15 +24,9 @@ const crossSell = {
     subMenu: ['Dashboard', 'Katalog', 'Widgets', 'Kampagnen', 'Reports']
 }
 export const menus = [analytics, crossSell]
-// function login(user) {
-//     user.group === 'A' && user.isUser ? console.log(analytics) : console.log(analytics.title, analytics.subMenu.slice(0, 2) )
-// }
-// login(userA)
-// console.log(analytics.subMenu.slice(0, 2).map((e, i) => `<li key=${i}>${e}</li>`))
 
-
-function createMenuItems(user, menus) {
-
+export function createMenuItems(user, menus) {
+    if (Object.keys(user).length === 0) return []
     var menuArray = []
     // Kunde B ==> permission == only Analytics
     if (!user.isPremium) menuArray = [menus.find(m => m.title === 'Analytics')];
@@ -50,11 +44,11 @@ function createMenuItems(user, menus) {
         return acc
     }, [])
 
-    console.log(menuArray)
+    // console.log(menuArray)
 
     return menuArray
 }
-var test = createMenuItems(userA, menus)
+var test = createMenuItems({}, menus)
 console.log(test)
 
 export function generateMarkup(obj) {
@@ -62,16 +56,16 @@ export function generateMarkup(obj) {
     var titleLower = obj.title.toLowerCase().replace(' ', '-')
     return `
 
-                <div className="container container__${titleLower}">
-                    <h3 className="container__title">
-                    {' '}
+                <div class="container container__${titleLower}">
+                    <h3 class="container__title">
+                   
                          <a href="/${titleLower}">${obj.title}</a>
                     </h3>
-                    <ul className="container__menuItems container__menuItems--${obj.title}">
+                    <ul class="container__menuItems container__menuItems--${obj.title}">
                     ${obj.subMenu ?
             obj.subMenu.map(item => {
                 return `
-                        <li className="menu__item">
+                        <li class="menu__item">
                             <a href="/${titleLower}/${item.toLowerCase()}">${item}</a>
                         </li>
                         `
@@ -83,5 +77,6 @@ export function generateMarkup(obj) {
 }
 // const markup = generateMarkup(analytics)
 
-const markup = test.map(obj => generateMarkup(obj)).join('')
-console.log(markup)
+export const markup = test.map(obj => generateMarkup(obj)).join('')
+// console.log(markup)
+

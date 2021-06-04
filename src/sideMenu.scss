@@ -36,6 +36,7 @@
 
       .menu__item {
         list-style: none;
+        position: relative;
         a {
           padding: 8px 8px 8px 4rem;
           text-decoration: none;
@@ -44,8 +45,12 @@
           display: block;
           transition: 0.2s;
         }
-        a:hover {
-          // color: black;
+        a::before {
+          content: '>';
+          position: absolute;
+          // font-style: bold;
+          left: 10px;
+          color: white;
         }
       }
       .menu__item:hover {

@@ -3,7 +3,7 @@ import React from 'react';
 import Login from './Login';
 import SideMenu from './SideMenu';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import { users, menus } from './data.js';
+import { users } from './data.js';
 
 // function App() {
 //   return (
@@ -18,28 +18,39 @@ import { users, menus } from './data.js';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      userData: {},
+    this.state = JSON.parse(window.localStorage.getItem('state')) || {
+      user: {},
     };
 
-    this.b = this.b.bind(this);
+    this.getUser = this.getUser.bind(this);
   }
-
-  b(obj) {
-    // var menus = [];
-    var user = users.find((user) => user.group === obj.userName);
+  setState(state) {
+    window.localStorage.setItem('state', JSON.stringify(state));
+    super.setState(state);
+  }
+  getUser(obj) {
+    const user = users.find((user) => user.group === obj.userName);
     if (obj.isUser === true) user.isUser = obj.isUser;
 
-    console.log(user);
+    this.setState({
+      user: user,
+    });
   }
+  // getMarkup() {
+  //   const items = createMenuItems(this.state.user, menus);
+  //   const markup = items.map((obj) => generateMarkup(obj)).join('');
+  //   this.setState({
+  //     markup: markup,
+  //   });
+  // }
 
   render() {
     return (
-      <Router>
-        <div className="App">
-          <Login test={this.b} />
+      <div className="App">
+        <Login getUser={this.getUser} />
 
-          <SideMenu />
+        <SideMenu user={this.state.user} />
+        <Router>
           <div className="content">
             <Switch>
               {/* <Route exact path="/">
@@ -51,13 +62,40 @@ class App extends React.Component {
               <Route exact path="/analytics/dashboard">
                 <h1>Dashboard</h1>
               </Route>
+              <Route exact path="/analytics/reports">
+                <h1>Reports</h1>
+              </Route>
+              <Route exact path="/analytics/eigene-reports">
+                <h1>Eigene-Reports</h1>
+              </Route>
+              <Route exact path="/analytics/centricity">
+                <h1>Centricity</h1>
+              </Route>
+              <Route exact path="/analytics/plug-ins">
+                <h1>Plug-Ins</h1>
+              </Route>
               <Route exact path="/cross-sell">
                 <h1>Cross-Sell</h1>
               </Route>
+              <Route exact path="/cross-sell/dashboard">
+                <h1>Dashboard</h1>
+              </Route>
+              <Route exact path="/cross-sell/katalog">
+                <h1>Katalog</h1>
+              </Route>
+              <Route exact path="/cross-sell/widgets">
+                <h1>Widgets</h1>
+              </Route>
+              <Route exact path="/cross-sell/kampagnen">
+                <h1>Kampagnen</h1>
+              </Route>
+              <Route exact path="/cross-sell/reports">
+                <h1>Reports</h1>
+              </Route>
             </Switch>
           </div>
-        </div>
-      </Router>
+        </Router>
+      </div>
     );
   }
 }

@@ -1,9 +1,23 @@
 import React from 'react';
-import './sideMenu.scss';
-import { generateMarkup, menus } from './data';
+import ReactHtmlParser from 'react-html-parser';
+import { Link } from 'react-router-dom';
 
-function SideMenu() {
-  return <div className="menu__container">{generateMarkup(menus[0])}</div>;
+import './sideMenu.scss';
+import { menus, createMenuItems, generateMarkup } from './data';
+
+function SideMenu({ user }) {
+  console.log(user, menus);
+  const items = createMenuItems(user, menus);
+  const html = items.map((obj) => generateMarkup(obj)).join('');
+  const jsx = ReactHtmlParser(html, [
+    function transform(node) {
+      if (node.type === 'tag' && node.name === 'a') {
+        return <Link to={node.attribs.href}>{node.value}</Link>;
+      }
+    },
+  ]);
+
+  return <div className="menu__container">{jsx}</div>;
 }
 
 export default SideMenu;

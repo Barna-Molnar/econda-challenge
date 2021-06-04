@@ -2,4 +2,10 @@
   display: grid;
   grid-template-rows: min-content 100%;
   grid-template-columns: min-content 1fr;
+  overflow-y: hidden;
+
+  .content {
+    background-color: #bfc7cf;
+    // border-top: 2px solid #01498e;
+  }
 }
