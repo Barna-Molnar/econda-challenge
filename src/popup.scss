@@ -6,19 +6,13 @@
 .overlay {
   opacity: 100;
   position: fixed;
-  /* Sit on top of the page content */
-  // display: none;
-  /* Hidden by default */
   width: 100%;
-  /* Full width (cover the whole page) */
   height: 100%;
-  /* Full height (cover the whole page) */
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  /* Black background with opacity */
   z-index: 2;
   transition: all 0.2s;
   display: flex;
@@ -64,8 +58,8 @@
       }
     }
     button:hover {
-      //   background-color: #0069d9;
-      background-color: #0964c5;
+      // background-color: #0964c5;
+      background-color: #0069d9;
       border-color: #0062cc;
     }
 

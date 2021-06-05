@@ -1,41 +1,23 @@
 @import './color.scss';
 .menu__container {
   height: 100vh;
-  //   border: 1px solid black;
   width: 18rem;
   display: flex;
   flex-direction: column;
 
-  //   background-image: linear-gradient(rgb(177, 177, 177), rgb(58, 58, 58));
-
-  // .menu__title {
-  //   font-size: 1.6rem;
-  //   // border: 1px solid pink;
-  //   padding: 0.5rem 1rem;
-  //   cursor: pointer;
-  // }
-
   .container {
-    // padding: 0.5rem 1.6rem;
-
     &__title {
       font-size: 1.6rem;
       padding: 1rem 2rem;
       cursor: pointer;
-
-      a {
-        text-decoration: none;
-      }
-      a:visited {
-        color: rgb(71, 70, 70);
-      }
     }
     &__menuItems {
       .menu__item {
         list-style: none;
         position: relative;
-        transition: 0.2s;
+        transition: 0.1s;
         border-right: 4px solid transparent;
+
         a {
           padding: 8px 8px 8px 4rem;
           text-decoration: none;
@@ -50,14 +32,12 @@
           position: absolute;
           font-size: 1.3rem;
           font-weight: 800;
-          // font-style: bold;
           left: 10px;
           color: white;
+          transition: 0.1s;
         }
       }
       .menu__item:hover {
-        // background-color: rgb(85, 85, 85);
-        // background-color: $dunkelblau;
         border-right: 4px solid $dunkelblau;
         a {
           color: white;

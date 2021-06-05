@@ -34,9 +34,11 @@ class App extends React.Component {
     return (
       <div className="App">
         <Login logIn={this.logIn} logOut={this.logOut} user={this.state.user} />
+
         <div className="App__menu__container">
           <SideMenu user={this.state.user} />
         </div>
+
         <div className="content">
           <Switch>
             <Route exact path="/">
@@ -79,6 +81,7 @@ class App extends React.Component {
               <h1>Reports</h1>
             </Route>
           </Switch>
+          <div className="footer">&nbsp;</div>
         </div>
       </div>
     );

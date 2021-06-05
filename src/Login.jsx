@@ -3,14 +3,20 @@ import './login.scss';
 
 function Login({ logIn, logOut, user }) {
   const [userName, setUserName] = useState('');
+  const [disabled, setDisabled] = useState(false);
 
   return (
     <div className="container__form">
       <form className="form__container">
         <div className="form__container__input-group">
           <label htmlFor="name" className="form__container__input-group__label">
-            <i className="fas fa-user-lock"></i>
-            Login
+            {user ? (
+              <i class="fas fa-user"></i>
+            ) : (
+              <i className="fas fa-user-lock"></i>
+            )}
+
+            {user ? user.userName : 'Login'}
           </label>
           <input
             className="input"
@@ -22,18 +28,21 @@ function Login({ logIn, logOut, user }) {
             type="text"
             placeholder="username"
             required
+            disabled={disabled}
           />
 
           <button
             className="loginBtn"
             onClick={(e) => {
               e.preventDefault();
-              if (!user) {
+              if (!user && userName) {
                 logIn(userName);
                 setUserName('');
+                setDisabled(true);
               }
               if (user) {
                 logOut();
+                setDisabled(false);
                 return;
               }
             }}

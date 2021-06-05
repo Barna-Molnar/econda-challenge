@@ -9,8 +9,18 @@
     width: 18rem;
   }
   .content {
+    height: 100vh;
+    position: relative;
     background-color: $hellblau;
-    padding: 5rem;
-    // border-top: 2px solid #01498e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .footer {
+    position: absolute;
+    bottom: 0;
+    height: 15%;
+    width: 100%;
+    background-color: $hellgrau-2;
   }
 }

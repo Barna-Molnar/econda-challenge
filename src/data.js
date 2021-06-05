@@ -7,14 +7,14 @@ const customerA = {
 
 }
 const aUserOne = {
+    userName: 'Almi',
     isAdmin: true,
-    customer: customerA,
-    userName: 'Almi'
+    customer: customerA
 }
 const aUserTwo = {
+    userName: 'Almi2',
     isAdmin: false,
     customer: customerA,
-    userName: 'Almi2'
 }
 
 const customerB = {
@@ -22,14 +22,14 @@ const customerB = {
     isPremium: false,
 }
 const bUserOne = {
+    userName: 'Barni',
     isAdmin: true,
     customer: customerB,
-    userName: 'Barni'
 }
 const bUserTwo = {
+    userName: 'Barni2',
     isAdmin: false,
     customer: customerB,
-    userName: 'Barni2'
 }
 
 export const users = [aUserOne, aUserTwo, bUserOne, bUserTwo]

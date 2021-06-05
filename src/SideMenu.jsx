@@ -6,9 +6,9 @@ import { menus, createMenuItems } from './data';
 
 function SideMenu({ user }) {
   const [popupIsOpen, setPopupIsOpen] = useState(false);
-  /// functionality to creating the menu Items
-  console.log(user);
+
   if (!user) return null;
+  /// creating the menu Items
   const items = createMenuItems(user, menus);
 
   /// Popup functionality
@@ -46,7 +46,6 @@ function SideMenu({ user }) {
           </div>
         );
       })}
-
       <Popup open={popupIsOpen} close={popupClose} user={user.userName} />
     </div>
   );
