@@ -25,15 +25,15 @@ function SideMenu({ user }) {
       onClick={user.customer.isPaid ? () => '' : popupOpen}
       className={`menu__container `}
     >
-      {items.map((menuItem) => {
+      {items.map((menuItem, i) => {
         const titleLowerCase = menuItem.title.toLowerCase().replace(' ', '-');
         return (
-          <div className={`container container__${titleLowerCase}`}>
+          <div className={`container container__${titleLowerCase}`} key={i}>
             <h3 className="container__title">{menuItem.title}</h3>
             <ul className="container__menuItems">
               {menuItem.subMenu.map((subMenuItem, i) => {
                 return (
-                  <li className="menu__item" key={i + 1}>
+                  <li className="menu__item" key={i}>
                     <Link
                       to={`/${titleLowerCase}/${subMenuItem.toLowerCase()}`}
                     >

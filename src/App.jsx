@@ -15,7 +15,6 @@ class App extends React.Component {
     this.logIn = this.logIn.bind(this);
     this.logOut = this.logOut.bind(this);
   }
-
   logIn(userName) {
     const user = users.find((user) => user.userName === userName);
     this.setState({
@@ -30,7 +29,14 @@ class App extends React.Component {
     this.props.history.push('/');
   }
 
+  // Clearing the URL on refresh
+  componentDidMount() {
+    const { history } = this.props;
+    history.replace('/');
+  }
+
   render() {
+    console.log(this.props);
     return (
       <div className="App">
         <Login logIn={this.logIn} logOut={this.logOut} user={this.state.user} />
@@ -42,7 +48,7 @@ class App extends React.Component {
         <div className="content">
           <Switch>
             <Route exact path="/">
-              {/* <h1>Pls log in</h1> */}
+              <h1>Home</h1>
             </Route>
             <Route exact path="/analytics">
               <h1>Analytics</h1>

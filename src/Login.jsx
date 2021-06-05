@@ -11,7 +11,7 @@ function Login({ logIn, logOut, user }) {
         <div className="form__container__input-group">
           <label htmlFor="name" className="form__container__input-group__label">
             {user ? (
-              <i class="fas fa-user"></i>
+              <i className="fas fa-user"></i>
             ) : (
               <i className="fas fa-user-lock"></i>
             )}
