@@ -18,7 +18,6 @@ class App extends React.Component {
 
   logIn(userName) {
     const user = users.find((user) => user.userName === userName);
-    console.log(user);
     this.setState({
       user: user,
     });
@@ -35,11 +34,13 @@ class App extends React.Component {
     return (
       <div className="App">
         <Login logIn={this.logIn} logOut={this.logOut} user={this.state.user} />
-        <SideMenu user={this.state.user} />
+        <div className="App__menu__container">
+          <SideMenu user={this.state.user} />
+        </div>
         <div className="content">
           <Switch>
             <Route exact path="/">
-              <h1>Pls log in</h1>
+              {/* <h1>Pls log in</h1> */}
             </Route>
             <Route exact path="/analytics">
               <h1>Analytics</h1>

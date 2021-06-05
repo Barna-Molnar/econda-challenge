@@ -1,10 +1,13 @@
 @import './color.scss';
 .App {
   display: grid;
-  grid-template-rows: min-content 100%;
+  grid-template-rows: min-content 1fr;
   grid-template-columns: min-content 1fr;
   overflow-y: hidden;
-
+  height: 100vh;
+  &__menu__container {
+    width: 18rem;
+  }
   .content {
     background-color: $hellblau;
     padding: 5rem;

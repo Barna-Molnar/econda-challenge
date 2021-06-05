@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-
 import { Link } from 'react-router-dom';
 import Popup from './Popup';
-
 import './sideMenu.scss';
 import { menus, createMenuItems } from './data';
 
@@ -12,6 +10,7 @@ function SideMenu({ user }) {
   console.log(user);
   if (!user) return null;
   const items = createMenuItems(user, menus);
+
   /// Popup functionality
   const popupOpen = (e) => {
     if (e.target.className !== 'container__title') return;
@@ -22,16 +21,19 @@ function SideMenu({ user }) {
   };
 
   return (
-    <div onClick={popupOpen} className={`menu__container `}>
+    <div
+      onClick={user.customer.isPaid ? () => '' : popupOpen}
+      className={`menu__container `}
+    >
       {items.map((menuItem) => {
         const titleLowerCase = menuItem.title.toLowerCase().replace(' ', '-');
         return (
           <div className={`container container__${titleLowerCase}`}>
             <h3 className="container__title">{menuItem.title}</h3>
             <ul className="container__menuItems">
-              {menuItem.subMenu.map((subMenuItem) => {
+              {menuItem.subMenu.map((subMenuItem, i) => {
                 return (
-                  <li className="menu__item">
+                  <li className="menu__item" key={i + 1}>
                     <Link
                       to={`/${titleLowerCase}/${subMenuItem.toLowerCase()}`}
                     >
@@ -45,7 +47,7 @@ function SideMenu({ user }) {
         );
       })}
 
-      <Popup open={popupIsOpen} close={popupClose} />
+      <Popup open={popupIsOpen} close={popupClose} user={user.userName} />
     </div>
   );
 }

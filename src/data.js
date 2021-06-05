@@ -2,7 +2,7 @@
 
 
 const customerA = {
-    isPaid: true,
+    isPaid: false,
     isPremium: true,
 
 }
@@ -62,8 +62,7 @@ export function createMenuItems(user, menus) {
     return menus
 
 }
-// var test = createMenuItems({}, menus)
-// console.log(test)
+
 
 
 

@@ -29,8 +29,8 @@ function Login({ logIn, logOut, user }) {
             onClick={(e) => {
               e.preventDefault();
               if (!user) {
-                console.log('here', userName);
                 logIn(userName);
+                setUserName('');
               }
               if (user) {
                 logOut();
