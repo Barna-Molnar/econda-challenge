@@ -1,18 +1,19 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
 
-function ProtectedRoute({ isInclude, component: Component, ...rest }) {
+function ProtectedRoute({ shouldRedirect, component: Component, ...rest }) {
     return (
-        <Route {...rest} render={(props) => {
-            if (isInclude) {
-                return <Component />
-            } else {
-                return <Redirect to={{ pathname: '/', state: { from: props.location } }} />
-            }
-        }} />
-
-
+        <Route {...rest} >
+            { shouldRedirect ? <Redirect to='/' /> : <Component />}
+        </Route>
     )
 }
 
 export default ProtectedRoute
+
+
+//     < ProtectedRoute
+// path = "/cross-sell/dashboard"
+// component = { CrossSell }
+// shouldRedirect = {! this.state.routes.includes('/cross-sell/dashboard') }
+//     />

@@ -22,7 +22,7 @@ function SideMenu({ user }) {
 
   return (
     <div
-      onClick={user.customer.isPaid ? () => '' : popupOpen}
+      onClick={user.customer.isPaid ? () => null : popupOpen}
       className={`menu__container `}
     >
       {items.map((menuItem, i) => {
@@ -31,17 +31,13 @@ function SideMenu({ user }) {
           <div className={`container container__${titleLowerCase}`} key={i}>
             <h3 className="container__title">{menuItem.title}</h3>
             <ul className="container__menuItems">
-              {menuItem.subMenu.map((subMenuItem, i) => {
-                return (
-                  <li className="menu__item" key={i}>
-                    <Link
-                      to={`/${titleLowerCase}/${subMenuItem.toLowerCase()}`}
-                    >
-                      {subMenuItem}
-                    </Link>
-                  </li>
-                );
-              })}
+              {menuItem.subMenu.map((subMenuItem, i) => (
+                <li className="menu__item" key={i}>
+                  <Link to={`/${titleLowerCase}/${subMenuItem.toLowerCase()}`}>
+                    {subMenuItem}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         );
@@ -52,50 +48,3 @@ function SideMenu({ user }) {
 }
 
 export default SideMenu;
-
-//  <div className="container container__analytics">
-//         <h3 className="container__title">
-//           {' '}
-//           <a href="/analytics">Analytics</a>
-//         </h3>
-//         <ul className="container__menuItems container__menuItems--Analitics">
-//           <li className="menu__item">
-//             <a href="/analytics/dashboard">Dashboard</a>
-//           </li>
-//           <li className="menu__item">
-//             <a href="#">Reports</a>
-//           </li>
-//           <li className="menu__item">
-//             <a href="#">Eigene Reports</a>
-//           </li>
-//           <li className="menu__item">
-//             <a href="#">Centricity</a>
-//           </li>
-//           <li className="menu__item">
-//             <a href="#">Plug-Ins</a>
-//           </li>
-//         </ul>
-//       </div>
-
-//       <div className="container container__CrossSell">
-//         <h3 className="container__title">
-//           <a href="/cross-sell">Cross Sell</a>{' '}
-//         </h3>
-//         <ul className="container__menuItems container__menuItems--CrossSell">
-//           <li className="menu__item">
-//             <a href="#">Dashboard</a>
-//           </li>
-//           <li className="menu__item">
-//             <a href="#">Katalog</a>
-//           </li>
-//           <li className="menu__item">
-//             <a href="#">Widgets</a>
-//           </li>
-//           <li className="menu__item">
-//             <a href="#">Kampagnen</a>
-//           </li>
-//           <li className="menu__item">
-//             <a href="#">Reports</a>
-//           </li>
-//         </ul>
-//       </div>

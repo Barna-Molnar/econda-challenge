@@ -1,6 +1,6 @@
 
 
-
+// Costumer A 
 const customerA = {
     isPaid: true,
     isPremium: true,
@@ -17,8 +17,10 @@ const aUserTwo = {
     customer: customerA,
 }
 
+//Costumer B
+
 const customerB = {
-    isPaid: true,
+    isPaid: false,
     isPremium: false,
 }
 const bUserOne = {
@@ -34,6 +36,7 @@ const bUserTwo = {
 
 export const users = [aUserOne, aUserTwo, bUserOne, bUserTwo]
 
+// Menus
 const analytics = {
     title: 'Analytics',
     subMenu: ['Dashboard', 'Reports', 'Eigene-Reports', 'Centricity', 'Plug-Ins']
@@ -49,10 +52,17 @@ const notPaidMenu = [{ title: 'Analytics', subMenu: [] }, { title: 'Cross Sell',
 
 export const menus = [analytics, crossSell]
 
+
+
 export function createMenuItems(user, menus) {
-    if (!user.customer.isPaid) {
+    // If customer did not pay
+    if (!user.customer.isPaid && user.customer === customerA) {
         return notPaidMenu
     }
+    if (!user.customer.isPaid && user.customer === customerB) {
+        return [notPaidMenu[0]]
+    }
+    // Other Cases 
     if (!user.customer.isPremium) {
         return [analytics]
     }
@@ -62,6 +72,10 @@ export function createMenuItems(user, menus) {
     return menus
 
 }
+
+
+
+
 
 
 

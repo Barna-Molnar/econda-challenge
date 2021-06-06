@@ -3,7 +3,6 @@ import './login.scss';
 
 function Login({ logIn, logOut, user }) {
   const [userName, setUserName] = useState('');
-  const [disabled, setDisabled] = useState(false);
 
   return (
     <div className="container__form">
@@ -18,18 +17,19 @@ function Login({ logIn, logOut, user }) {
 
             {user ? user.userName : 'Login'}
           </label>
-          <input
-            className="input"
-            onChange={(e) => {
-              e.preventDefault();
-              setUserName(e.target.value);
-            }}
-            value={userName}
-            type="text"
-            placeholder="username"
-            required
-            disabled={disabled}
-          />
+          {!user && (
+            <input
+              className="input"
+              onChange={(e) => {
+                e.preventDefault();
+                setUserName(e.target.value);
+              }}
+              value={userName}
+              type="text"
+              placeholder="username"
+              required
+            />
+          )}
 
           <button
             className="loginBtn"
@@ -38,12 +38,10 @@ function Login({ logIn, logOut, user }) {
               if (!user && userName) {
                 logIn(userName);
                 setUserName('');
-                setDisabled(true);
+                return;
               }
               if (user) {
                 logOut();
-                setDisabled(false);
-                return;
               }
             }}
           >

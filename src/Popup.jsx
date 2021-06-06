@@ -12,10 +12,11 @@ function MenuPopup({ open, close, user }) {
 
           <p className="modal__text">
             Ooops.... something went wrong! You are currently not allowed to use
-            our product. For more information please contact with our SalesTeam!
+            our product. For more information please contact with our Sales
+            Team!
           </p>
 
-          <button onClick={close}>Close and Contact with the Salesteam</button>
+          <button onClick={close}>Close and Contact with the Sales Team</button>
         </div>
       </Popup>
     </div>
