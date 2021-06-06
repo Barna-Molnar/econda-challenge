@@ -2,7 +2,7 @@
 
 
 const customerA = {
-    isPaid: false,
+    isPaid: true,
     isPremium: true,
 
 }

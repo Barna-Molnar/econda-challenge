@@ -4,12 +4,15 @@ import Login from './Login';
 import SideMenu from './SideMenu';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { users } from './data.js';
+import ProtectedRoute from './ProtectedRoute';
+import CrossSell from './MenuComponents/CrossSell';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       user: undefined,
+      routes: [],
     };
 
     this.logIn = this.logIn.bind(this);
@@ -29,11 +32,12 @@ class App extends React.Component {
     this.props.history.push('/');
   }
 
-  // Clearing the URL on refresh
-  componentDidMount() {
-    const { history } = this.props;
-    history.replace('/');
-  }
+  // Clearing the URL on refresh or url changes
+  // componentDidMount() {
+  //   const { location, history } = this.props;
+
+  //   history.replace('/');
+  // }
 
   render() {
     console.log(this.props);
@@ -50,9 +54,9 @@ class App extends React.Component {
             <Route exact path="/">
               <h1>Home</h1>
             </Route>
-            <Route exact path="/analytics">
+            {/* <Route exact path="/analytics">
               <h1>Analytics</h1>
-            </Route>
+            </Route> */}
             <Route exact path="/analytics/dashboard">
               <h1>Dashboard</h1>
             </Route>
@@ -68,12 +72,17 @@ class App extends React.Component {
             <Route exact path="/analytics/plug-ins">
               <h1>Plug-Ins</h1>
             </Route>
-            <Route exact path="/cross-sell">
+            <ProtectedRoute
+              path="/cross-sell/dashboard"
+              component={CrossSell}
+              isInclude={this.state.routes.includes('/cross-sell/dashboard')}
+            />
+            {/* <Route exact path="/cross-sell">
               <h1>Cross-Sell</h1>
-            </Route>
-            <Route exact path="/cross-sell/dashboard">
+            </Route> */}
+            {/* <Route exact path="/cross-sell/dashboard">
               <h1>Dashboard</h1>
-            </Route>
+            </Route> */}
             <Route exact path="/cross-sell/katalog">
               <h1>Katalog</h1>
             </Route>
