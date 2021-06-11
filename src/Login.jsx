@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './login.scss';
 
-function Login({ logIn, logOut, user }) {
+function Login({ logIn, logOut, user, languageSwitch }) {
   const [userName, setUserName] = useState('');
 
   return (
@@ -46,6 +46,15 @@ function Login({ logIn, logOut, user }) {
             }}
           >
             {!user ? 'login' : 'logout'}
+          </button>
+          <button
+            className="languageBtn"
+            onClick={(e) => {
+              e.preventDefault();
+              languageSwitch();
+            }}
+          >
+            Language
           </button>
         </div>
       </form>

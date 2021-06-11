@@ -4,12 +4,13 @@ import Popup from './Popup';
 import './sideMenu.scss';
 import { menus, createMenuItems } from './data';
 
-function SideMenu({ user }) {
+function SideMenu({ user, language }) {
   const [popupIsOpen, setPopupIsOpen] = useState(false);
 
   if (!user) return null;
-  /// creating the menu Items
-  const items = createMenuItems(user, menus);
+
+  //  creating the menu Items
+  const items = createMenuItems(user, menus, language);
 
   /// Popup functionality
   const popupOpen = (e) => {

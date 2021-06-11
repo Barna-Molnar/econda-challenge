@@ -1,5 +1,5 @@
-import './App.scss';
 import React from 'react';
+import './App.scss';
 import Login from './Login';
 import SideMenu from './SideMenu';
 import { Switch, Route, withRouter, Redirect } from 'react-router-dom';
@@ -8,36 +8,59 @@ import { users } from './data.js';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.state = JSON.parse(window.localStorage.getItem('state')) || {
       user: undefined,
+      language: 'EN',
       routes: [],
     };
-
+    this.languageSwitch = this.languageSwitch.bind(this);
     this.logIn = this.logIn.bind(this);
     this.logOut = this.logOut.bind(this);
   }
 
-  logIn(userName) {
-    const user = users.find((user) => user.userName === userName);
+  languageSwitch() {
     this.setState({
-      user: user,
+      user: this.state.user,
+      language: this.state.language === 'EN' ? 'DE' : 'EN',
+    });
+  }
+  setState(state) {
+    console.log(state);
+    window.localStorage.setItem('state', JSON.stringify(state));
+    super.setState(state);
+  }
+
+  logIn(userName) {
+    const language = this.state.language;
+    const user = users.find((user) => user.userName === userName);
+    window.localStorage.setItem('state', JSON.stringify({ language, user }));
+
+    this.setState({
+      user,
+      language,
     });
   }
 
   logOut() {
     this.setState({
-      user: '',
+      user: undefined,
     });
     this.props.history.push('/');
+    localStorage.clear();
   }
 
   render() {
     return (
       <div className="App">
-        <Login logIn={this.logIn} logOut={this.logOut} user={this.state.user} />
+        <Login
+          logIn={this.logIn}
+          logOut={this.logOut}
+          user={this.state.user}
+          languageSwitch={this.languageSwitch}
+        />
 
         <div className="App__menu__container">
-          <SideMenu user={this.state.user} />
+          <SideMenu user={this.state.user} language={this.state.language} />
         </div>
 
         <div className="content">
