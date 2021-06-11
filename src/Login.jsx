@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './login.scss';
 
-function Login({ logIn, logOut, user, languageSwitch }) {
+function Login({ logIn, logOut, user, languageSwitch, language }) {
   const [userName, setUserName] = useState('');
 
   return (
@@ -54,7 +54,7 @@ function Login({ logIn, logOut, user, languageSwitch }) {
               languageSwitch();
             }}
           >
-            Language
+            {language}
           </button>
         </div>
       </form>

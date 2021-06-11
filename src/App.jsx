@@ -10,8 +10,7 @@ class App extends React.Component {
     super(props);
     this.state = JSON.parse(window.localStorage.getItem('state')) || {
       user: undefined,
-      language: 'EN',
-      routes: [],
+      language: 'DE',
     };
     this.languageSwitch = this.languageSwitch.bind(this);
     this.logIn = this.logIn.bind(this);
@@ -25,7 +24,6 @@ class App extends React.Component {
     });
   }
   setState(state) {
-    console.log(state);
     window.localStorage.setItem('state', JSON.stringify(state));
     super.setState(state);
   }
@@ -57,6 +55,7 @@ class App extends React.Component {
           logOut={this.logOut}
           user={this.state.user}
           languageSwitch={this.languageSwitch}
+          language={this.state.language}
         />
 
         <div className="App__menu__container">

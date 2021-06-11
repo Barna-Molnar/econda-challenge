@@ -3,7 +3,7 @@
 // Costumer A 
 const customerA = {
     name: 'A',
-    isPaid: false,
+    isPaid: true,
     isPremium: true,
 
 }
@@ -41,13 +41,13 @@ export const users = [aUserOne, aUserTwo, bUserOne, bUserTwo]
 // Menus
 const analyticsDE = {
     language: "DE",
-    title: 'Analytics',
+    title: 'AnalyticsDE',
     subMenu: ['Dashboard', 'Reports', 'Eigene-Reports', 'Centricity', 'Plug-Ins']
 }
 
 const crossSellDE = {
     language: "DE",
-    title: 'Cross Sell',
+    title: 'Cross SellDE',
     subMenu: ['Dashboard', 'Katalog', 'Widgets', 'Kampagnen', 'Reports']
 }
 
@@ -70,30 +70,29 @@ export const menus = [analyticsDE, crossSellDE, analyticsEN, crossSellEN]
 
 
 export function createMenuItems(user, menus, language) {
-    var menu = menus.filter((obj) => obj.language === language)
-    console.log(menu)
-    // If customer did not pay
-    console.log(user.customer)
+    const filteredMenus = menus.filter((obj) => obj.language === language)
+    const analytics = filteredMenus.find(menu => menu.title.startsWith("Analytics"))
+    const crossSell = filteredMenus.find(menu => menu.title.startsWith("Cross Sell"))
 
+    // If customer did not pay
     if (!user.customer.isPaid && user.customer.name === 'A') {
         return notPaidMenu
     }
     if (!user.customer.isPaid && user.customer.name === 'B') {
         return [notPaidMenu[0]]
     }
-    // Other Cases 
+
+    // I customer is not Premium 
     if (!user.customer.isPremium) {
-        return [analyticsDE]
+        return [analytics]
     }
+    // If the the user don't have the admin Permission
     if (!user.isAdmin) {
-        return [{ ...analyticsDE, subMenu: analyticsDE.subMenu.slice(0, 2) }, crossSellDE]
+
+        return [{ ...analytics, subMenu: analytics.subMenu.slice(0, 2) }, crossSell]
     }
-    // if (user.customer.name === 'A' && user.customer.isPremium && user.customer.isPaid) {
 
-    // }
-
-    return menus.slice(0, 2)
-    // return menu
+    return filteredMenus
 
 }
 
